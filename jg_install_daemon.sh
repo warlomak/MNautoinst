@@ -8,6 +8,13 @@ EXT_IP="`wget -qO- http://ipecho.net/plain`"
 YOURKEY=$1
 #YOURKEY="n3keTrJiu1AUGYo4iNV5LQVtFNR5EGL1KBHG1tJbtdpUTKfTdE"
 
+if [$YOURKEY=""]; then
+{
+  echo "You must inter the masternode private key as argument!"
+  exit 0
+}
+fi
+
 apt-get update
 apt-get install wget libdb5.3++ libboost-all-dev libdb5.3++ unzip libboost-all-dev dh-autoreconf build-essential libtool autotools-dev \
 autoconf automake libssl-dev libboost-all-dev libevent-dev bsdmainutils \
@@ -39,10 +46,6 @@ echo masternode=1 >>$conf_file
 echo masternodeaddr=$EXT_IP:2333 >>$conf_file
 echo masternodeprivkey=$YOURKEY >>$conf_file
 
-#$PROJECT_PATH/joltgasd -daemon -datadir=$PROJECT_PATH"/jg-wallet" &&
-
-#sleep 5
-
 echo "[Unit]" >$joltinit
 echo "Description=JoltGas's distributed currency daemon" >>$joltinit
 echo "After=network.target" >>$joltinit
@@ -70,7 +73,5 @@ service joltgas start
 sleep 5
 
 $PROJECT_PATH/joltgasd -datadir="$PROJECT_PATH/jg-wallet" getinfo
-
-#add to /etc/rc.local
 
 echo "Installation complete..."
