@@ -19,8 +19,8 @@ apt-get update && apt-get install libdb4.8-dev libdb4.8++-dev -y
 
 git clone https://github.com/JoltDev/Jolt-Gas
 cd $PROJECT_PATH/Jolt-Gas
-chmod +x $PROJECT_PATH/compile-daemon.sh
-$PROJECT_PATH/compile-daemon.sh
+chmod +x ./compile-daemon.sh
+./compile-daemon.sh
 cd ..
 
 killall joltgasd
