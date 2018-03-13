@@ -6,7 +6,6 @@ joltinit="/lib/systemd/system/joltgas.service"
 
 EXT_IP="`wget -qO- http://ipecho.net/plain`"
 YOURKEY=$1
-#YOURKEY="n3keTrJiu1AUGYo4iNV5LQVtFNR5EGL1KBHG1tJbtdpUTKfTdE"
 
 apt-get update
 apt-get install wget libdb5.3++ libboost-all-dev libdb5.3++ unzip libboost-all-dev dh-autoreconf build-essential libtool autotools-dev \
